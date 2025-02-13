@@ -1,0 +1,27 @@
+# Binaries
+*.exe
+*.out
+*.o
+*.a
+*.so
+*.dll
+
+# Go Build Artifacts
+/bin/
+/pkg/
+/build/
+*.test
+*.prof
+
+# Go Modules
+go.sum
+
+# IDE and Editor Configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-Specific Files
+.DS_Store
+Thumbs.db
