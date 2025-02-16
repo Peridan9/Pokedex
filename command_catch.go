@@ -7,7 +7,7 @@ import (
 )
 
 func commandCatch(cfg *config, args ...string) error {
-	if len(args) > 1 {
+	if len(args) != 1 {
 		return errors.New("you must provide a single pokemon name")
 	}
 
