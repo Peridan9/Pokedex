@@ -1,19 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"strings"
+	"time"
+
+	"github.com/Peridan9/Pokedex/internal/pokeapi"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
-}
+	pokeClient := pokeapi.NewClient(5 * time.Second)
+	cfg := &config{
+		pokeapiClient: pokeClient,
+	}
 
-func cleanInput(text string) []string {
-	// Convert the text to lowercase
-	text = strings.ToLower(text)
-	// Remove the whitespace from start and end
-	text = strings.TrimSpace(text)
-	// Split the text into word based on whitespace between them and return a slice of all words
-	return strings.Fields(text)
+	startRepl(cfg)
 }
