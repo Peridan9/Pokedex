@@ -2,17 +2,21 @@ package pokeapi
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 )
 
 func (c *Client) GetLocation(locationName string) (Location, error) {
-	url := baseURL + "/location-area" + locationName
+	url := baseURL + "/location-area/" + locationName
+	fmt.Println("Fetching URL:", url) // Debug: Log the URL being fetched
 
 	if val, ok := c.cache.Get(url); ok {
+		fmt.Println("Using cached data")
 		locationResp := Location{}
 		err := json.Unmarshal(val, &locationResp)
 		if err != nil {
+			fmt.Println("Cache data error:", err) // Debug: Check if cache is corrupted
 			return Location{}, err
 		}
 		return locationResp, nil
@@ -35,9 +39,12 @@ func (c *Client) GetLocation(locationName string) (Location, error) {
 		return Location{}, err
 	}
 
+	fmt.Println("Raw Response Body:", string(data))
+
 	locationResp := Location{}
 	err = json.Unmarshal(data, &locationResp)
 	if err != nil {
+		fmt.Println("JSON Parse Error:", err)
 		return Location{}, err
 	}
 
