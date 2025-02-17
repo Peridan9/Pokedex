@@ -1,5 +1,7 @@
 package pokeapi
 
+// Pokemon struct represents a Pokémon entity as retrieved from the PokeAPI.
+// The struct fields are mapped to JSON keys from the API response.
 type Pokemon struct {
 	ID             int    `json:"id"`
 	Name           string `json:"name"`

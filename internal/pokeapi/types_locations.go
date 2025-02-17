@@ -11,6 +11,8 @@ type RespShallowLocations struct {
 	} `json:"results"`
 }
 
+// Location struct represents a Location entity as retrieved from the PokeAPI.
+// The struct fields are mapped to JSON keys from the API response.
 type Location struct {
 	ID                   int    `json:"id"`
 	Name                 string `json:"name"`
